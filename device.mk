@@ -160,6 +160,7 @@ PRODUCT_PACKAGES += \
     init.target.rc \
     fstab.plarfdragon \
     ueventd.plarfdragon.rc \
+    init.safailnet.rc
 
 # Namespaces
 PRODUCT_SOONG_NAMESPACES += \
