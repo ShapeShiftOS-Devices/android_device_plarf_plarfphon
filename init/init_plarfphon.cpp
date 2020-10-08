@@ -63,8 +63,8 @@ constexpr const char *DEVICES[] = {
 };
 
 constexpr const char *BUILD_DESCRIPTION[] = {
-    "Plurf-user 10 QKQ1.190910.002 V11.0.8.0.QFQMIXM release-keys",
-    "Plarf-user 10 QKQ1.190910.002 V11.0.8.0.QFQMIXM release-keys",
+    "Plurf-user 10 QKQ1.190910.002 V12.1.3.0.RJKCNXM release-keys",
+    "Plarf-user 10 QKQ1.190910.002 V12.1.3.0.RJKCNXM release-keys",
 };
 
 constexpr const char *CLIENT_ID[] = {
