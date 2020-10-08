@@ -192,6 +192,10 @@ TARGET_COMMON_QTI_COMPONENTS := \
 # Shipping API
 PRODUCT_SHIPPING_API_LEVEL := 29
 
+# Power HAL
+PRODUCT_PACKAGES += \
+    android.hardware.power@1.3-service.plarf_sm69420-libperfmgr
+
 # Seccomp
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/seccomp/configstore@1.1.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/configstore@1.1.policy \
