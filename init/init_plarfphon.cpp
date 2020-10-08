@@ -52,6 +52,11 @@ constexpr const char *BRANDS[] = {
     "Plarf",
 };
 
+constexpr const char *PRODUCTS[] = {
+    "plarfon",
+    "pharfphon",
+};
+
 constexpr const char *DEVICES[] = {
     "plarfon",
     "plarfphon",
@@ -60,13 +65,6 @@ constexpr const char *DEVICES[] = {
 constexpr const char *BUILD_DESCRIPTION[] = {
     "Plurf-user 10 QKQ1.190910.002 V11.0.8.0.QFQMIXM release-keys",
     "Plarf-user 10 QKQ1.190910.002 V11.0.8.0.QFQMIXM release-keys",
-};
-
-constexpr const char *BUILD_FINGERPRINT[] = {
-    "Plurf/plarfon/plarfphon:10/QKQ1.190910.002/V11.0.8.0.QFQMIXM:user"
-    "release-keys",
-    "Plarf/plarfphon/plarfphon:10/QKQ1.190910.002/V11.0.8.0.QFQMIXM:user/release-keys"
-    "release-keys",
 };
 
 constexpr const char *CLIENT_ID[] = {
@@ -106,11 +104,9 @@ void load_props(const char *model, bool is_in = false) {
     if (!is_in) {
       ro_prop_override(source, "brand", BRANDS[0], true);
       ro_prop_override(source, "name", PRODUCTS[0], true);
-      ro_prop_override(source, "fingerprint", BUILD_FINGERPRINT[0], false);
     } else {
       ro_prop_override(source, "brand", BRANDS[1], true);
       ro_prop_override(source, "name", PRODUCTS[1], true);
-      ro_prop_override(source, "fingerprint", BUILD_FINGERPRINT[1], false);
     }
   }
 
