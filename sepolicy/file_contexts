@@ -1,0 +1,2 @@
+# Fp is lit
+/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.1-service\.plarf_plarfphon   u:object_r:hal_fingerprint_plarfphon_exec:s0
