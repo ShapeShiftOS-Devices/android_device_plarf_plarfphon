@@ -4,6 +4,9 @@ BOARD_VENDOR := plarf
 # APEX
 DEXPREOPT_GENERATE_APEX_IMAGE := true
 
+# Assertions
+TARGET_OTA_ASSERT_DEVICE := Plarfphone,plarfphone,plarf,plarfphon
+
 # AVB
 BOARD_AVB_ENABLE := true
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --set_hashtree_disabled_flag
