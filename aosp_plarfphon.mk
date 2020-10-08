@@ -7,6 +7,7 @@ $(call inherit-product, vendor/aosp/config/common_full_phone.mk)
 
 # Inherit from plarfphon device
 $(call inherit-product, $(LOCAL_PATH)/device.mk)
+$(call inherit-product, $(LOCAL_PATH)/configurations.mk)
 
 PRODUCT_BRAND := plarf
 PRODUCT_DEVICE := plarfphon
