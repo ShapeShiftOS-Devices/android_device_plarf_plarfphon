@@ -1,5 +1,8 @@
 /*
-   Copyright (c) 2014, The Linux Foundation. All rights reserved.
+   Copyright (c) 2015, The Linux Foundation. All rights reserved.
+   Copyright (C) 2016 The CyanogenMod Project.
+   Copyright (C) 2019-2020 The LineageOS Project.
+
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions are
    met:
@@ -25,41 +28,110 @@
    IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <stdlib.h>
+#include <fstream>
+#include <unistd.h>
+#include <vector>
+
+#include <android-base/properties.h>
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
 
-#include <android-base/properties.h>
 #include "property_service.h"
 #include "vendor_init.h"
 
+using android::base::GetProperty;
 using android::init::property_set;
 
-void property_override(char const prop[], char const value[])
-{
-    prop_info *pi;
+constexpr const char *RO_PROP_SOURCES[] = {
+    nullptr,   "product.", "product_services.", "odm.",
+    "vendor.", "system.",  "bootimage.",
+};
 
-    pi = (prop_info*) __system_property_find(prop);
-    if (pi)
-        __system_property_update(pi, value, strlen(value));
-    else
-        __system_property_add(prop, strlen(prop), value, strlen(value));
+constexpr const char *BRANDS[] = {
+    "Plurf",
+    "Plarf",
+};
+
+constexpr const char *DEVICES[] = {
+    "plarfon",
+    "plarfphon",
+};
+
+constexpr const char *BUILD_DESCRIPTION[] = {
+    "Plurf-user 10 QKQ1.190910.002 V11.0.8.0.QFQMIXM release-keys",
+    "Plarf-user 10 QKQ1.190910.002 V11.0.8.0.QFQMIXM release-keys",
+};
+
+constexpr const char *BUILD_FINGERPRINT[] = {
+    "Plurf/plarfon/plarfphon:10/QKQ1.190910.002/V11.0.8.0.QFQMIXM:user"
+    "release-keys",
+    "Plarf/plarfphon/plarfphon:10/QKQ1.190910.002/V11.0.8.0.QFQMIXM:user/release-keys"
+    "release-keys",
+};
+
+constexpr const char *CLIENT_ID[] = {
+    "android-plarf",
+    "android-plarf-rev1",
+};
+
+void property_override(char const prop[], char const value[], bool add = true) {
+  prop_info *pi;
+
+  pi = (prop_info *)__system_property_find(prop);
+  if (pi)
+    __system_property_update(pi, value, strlen(value));
+  else if (add)
+    __system_property_add(prop, strlen(prop), value, strlen(value));
 }
 
-void property_override_multifp(char const buildfp[], char const systemfp[],
-	char const bootimagefp[], char const vendorfp[], char const value[])
-{
-	property_override(buildfp, value);
-	property_override(systemfp, value);
-	property_override(bootimagefp, value);
-	property_override(vendorfp, value);
+void load_props(const char *model, bool is_in = false) {
+  const auto ro_prop_override = [](const char *source, const char *prop,
+                                   const char *value, bool product) {
+    std::string prop_name = "ro.";
+
+    if (product)
+      prop_name += "product.";
+    if (source != nullptr)
+      prop_name += source;
+    if (!product)
+      prop_name += "build.";
+    prop_name += prop;
+
+    property_override(prop_name.c_str(), value);
+  };
+
+  for (const auto &source : RO_PROP_SOURCES) {
+    ro_prop_override(source, "device", is_in ? PRODUCTS[1] : PRODUCTS[0], true);
+    ro_prop_override(source, "model", model, true);
+    if (!is_in) {
+      ro_prop_override(source, "brand", BRANDS[0], true);
+      ro_prop_override(source, "name", PRODUCTS[0], true);
+      ro_prop_override(source, "fingerprint", BUILD_FINGERPRINT[0], false);
+    } else {
+      ro_prop_override(source, "brand", BRANDS[1], true);
+      ro_prop_override(source, "name", PRODUCTS[1], true);
+      ro_prop_override(source, "fingerprint", BUILD_FINGERPRINT[1], false);
+    }
+  }
+
+  if (!is_in) {
+    ro_prop_override(nullptr, "description", BUILD_DESCRIPTION[0], false);
+    property_override("ro.boot.product.hardware.sku", PRODUCTS[0]);
+  } else {
+    ro_prop_override(nullptr, "description", BUILD_DESCRIPTION[1], false);
+    property_override("ro.com.google.clientidbase", CLIENT_ID[0]);
+    property_override("ro.com.google.clientidbase.ms", CLIENT_ID[1]);
+  }
+  ro_prop_override(nullptr, "product", model, false);
 }
 
-void vendor_load_properties()
-{
-    // fingerprint
-    property_override("ro.build.description", "Plarf/plarfphon/plarfphon:10/QKQ1.190910.002/V11.0.8.0.QFQMIXM:user/release-keys");
-    property_override_multifp("ro.build.fingerprint", "ro.system.build.fingerprint", "ro.bootimage.build.fingerprint",
-	    "ro.vendor.build.fingerprint", "google/sunfish/sunfish:11/RP1A.200720.011/6746289:user/release-keys");
+void vendor_load_properties() {
+  std::string region;
+  region = GetProperty("ro.boot.hwc", "");
 
+  if (region == "CN") {
+    load_props(DEVICES[0], false);
+  } else if (region == "INDIA") {
+    load_props(DEVICES[1], true);
+  }
 }
