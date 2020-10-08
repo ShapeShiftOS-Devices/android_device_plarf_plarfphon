@@ -156,27 +156,27 @@ PRODUCT_PACKAGES += \
     init.crda.sh \
     init.mdm.sh \
     init.mi.usb.sh \
-    init.qcom.class_core.sh \
-    init.qcom.coex.sh \
-    init.qcom.crashdata.sh \
-    init.qcom.early_boot.sh \
-    init.qcom.efs.sync.sh \
-    init.qcom.post_boot.sh \
-    init.qcom.sdio.sh \
-    init.qcom.sensors.sh \
-    init.qcom.sh \
-    init.qcom.usb.sh \
+    init.plarfdragon.class_core.sh \
+    init.plarfdragon.coex.sh \
+    init.plarfdragon.crashdata.sh \
+    init.plarfdragon.early_boot.sh \
+    init.plarfdragon.efs.sync.sh \
+    init.plarfdragon.post_boot.sh \
+    init.plarfdragon.sdio.sh \
+    init.plarfdragon.sensors.sh \
+    init.plarfdragon.sh \
+    init.plarfdragon.usb.sh \
     init.qti.chg_policy.sh \
     init.qti.fm.sh \
     init.qti.ims.sh \
     qca6234-service.sh \
     init.msm.usb.configfs.rc \
-    init.qcom.factory.rc \
-    init.qcom.rc \
-    init.qcom.usb.rc \
+    init.plarfdragon.factory.rc \
+    init.plarfdragon.rc \
+    init.plarfdragon.usb.rc \
     init.target.rc \
-    fstab.qcom \
-    ueventd.qcom.rc \
+    fstab.plarfdragon \
+    ueventd.plarfdragon.rc \
 
 # Namespaces
 PRODUCT_SOONG_NAMESPACES += \
@@ -203,7 +203,7 @@ PRODUCT_COPY_FILES += \
 
 # WiFi
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini \
+    $(LOCAL_PATH)/configs/wifi/WCNSS_plarfdragon_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_plarfdragon_cfg.ini \
     $(LOCAL_PATH)/configs/wifi/aoa_cldb_falcon.bin:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/aoa_cldb_falcon.bin \
     $(LOCAL_PATH)/configs/wifi/aoa_cldb_swl14.bin:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/aoa_cldb_swl14.bin \
     $(LOCAL_PATH)/configs/wifi/fstman.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/fstman.ini \

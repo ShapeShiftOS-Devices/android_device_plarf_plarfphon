@@ -47,7 +47,7 @@ BUILD_BROKEN_USES_BUILD_COPY_HEADERS := true
 
 # Kernel
 BOARD_KERNEL_CMDLINE := \
-    androidboot.hardware=qcom \
+    androidboot.hardware=plarfdragon \
     androidboot.memcg=1 \
     androidboot.usbcontroller=a600000.dwc3 \
     cgroup.memory=nokmem,nosocket \
@@ -94,7 +94,7 @@ TARGET_COPY_OUT_VENDOR := vendor
 
 # Recovery
 BOARD_INCLUDE_RECOVERY_DTBO := true
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/fstab.qcom
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/fstab.plarfdragon
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TARGET_USERIMAGES_USE_F2FS := true
 
@@ -102,7 +102,7 @@ TARGET_USERIMAGES_USE_F2FS := true
 BOARD_VNDK_VERSION := current
 
 # Security patch level
-VENDOR_SECURITY_PATCH := 2020-03-05
+VENDOR_SECURITY_PATCH := 2420-69-69
 
 # HIDL
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
