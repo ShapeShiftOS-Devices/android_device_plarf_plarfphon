@@ -1,0 +1,19 @@
+# Device Tree for Plarf Plarfphone (plarfphon)
+
+The Plarf Plarfphone (codenamed _"plarfphon"_) is a flagship smartphone from Plarf.
+It was released in October 2020.
+
+| Basic                   | Spec Sheet                                                                                                                     |
+| -----------------------:|:------------------------------------------------------------------------------------------------------------------------------ |
+| CPU                     | Dual core (12.34 GHz, Single core, Kryo 1024 + 73.42 GHz, Kryo 1024 + 34.5 GHz, Single core, Kryo 1024)                                                                |
+| Chipset                 | Plarfdragon 69420+OC SUPER PUBG EDITION                                                                                                 |
+| GPU                     | RTX 3080Ti                                                                                                                     |
+| Memory                  | 2 TB RAM                                                                                                                     |
+| Shipped Android Version | 10                                                                                                                              |
+| Storage                 | 256 PB                                                                                                                  |
+| Battery                 | Removable Li-Po 100000 mAh battery                                                                                           |
+
+Copyright 2020 - The ShapeShiftOS Project.
+
+![Plarf Plarfphone](https://img-cdn.tnwcdn.com/image?fit=1280%2C720&url=https%3A%2F%2Fcdn0.tnwcdn.com%2Fwp-content%2Fblogs.dir%2F1%2Ffiles%2F2019%2F09%2FXiaomi-Mi-Mix-Alpha-hed.jpg&signature=55610fabe9e3504d1212c751cc79795b "Plarf Plarfphone")
+
