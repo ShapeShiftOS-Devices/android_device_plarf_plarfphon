@@ -1,4 +1,4 @@
-# Copyright (c) 2012-2015, 2017-2019, The Linux Foundation. All rights reserved.
+# Copyright (c) 2012-2015, 2017-2020, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -31,8 +31,9 @@
 firmware_directories /vendor/firmware_mnt/image/
 
 # the DIAG device node is not world writable/readable.
-#engineering model adaptation
-/dev/diag                 0660   root     system
+/dev/diag                 0660   system     oem_2901
+
+/dev/xlog                 0660   system     audio
 
 /dev/genlock              0666   system     system
 /dev/wlan                 0660   wifi       wifi
@@ -57,6 +58,7 @@ firmware_directories /vendor/firmware_mnt/image/
 /dev/ipa_odl_ctl          0660   radio      radio
 /dev/ipa_adpl             0660   system     oem_2905
 /dev/synx_device          0660   root       camera
+/dev/hgsl                 0666   system     system
 
 #permissions for CSVT
 /dev/smd11                0660   radio      radio
@@ -141,7 +143,8 @@ firmware_directories /vendor/firmware_mnt/image/
 /dev/sec_nvm_*            0660   system     system
 /dev/cryptoapp            0660   system     system
 /dev/spdaemon_ssr         0660   system     system
-/dev/iuicc                0660   system     system
+/dev/spu_hal_ssr          0660   system     system
+/dev/iuicc*               0660   system     system
 /dev/gemini0              0660   system     camera
 /dev/jpeg0                0660   system     camera
 /dev/jpeg1                0660   system     camera
@@ -179,7 +182,6 @@ firmware_directories /vendor/firmware_mnt/image/
 /dev/msm_vidc_dec_sec     0660   system     audio
 /dev/msm_vidc_enc         0660   system     audio
 /dev/msm_rotator          0660   system     system
-/dev/hw_random            0600   root       root
 /dev/sdsprpc-smd          0660   system     system
 
 #permissions for audio
@@ -337,12 +339,11 @@ firmware_directories /vendor/firmware_mnt/image/
 # Kmsg device
 /dev/kmsg                                               0620   root       system
 
-#bug 431178  huangfusheng.wt, add, 20190303, goodix_fp permission for bringup
-/dev/goodix_fp   0660   system   system
-
-#engineering model adaptation
-#hardwareinfo
-/dev/hardwareinfo        0660   root     system
+# mius iio devices
+/dev/iio:device*                                        0660   system     system
+/sys/devices/platform/us_prox.0/iio:device* buffer/enable                  0600 system system
+/sys/devices/platform/us_prox.0/iio:device* scan_elements/in_proximity_en  0600 system system
+/sys/devices/platform/us_prox.0/iio:device* scan_elements/in_timestamp_en  0600 system system
 
 # LED class devices
 /sys/class/leds/red      delay_on     0640    system    system
@@ -365,6 +366,9 @@ firmware_directories /vendor/firmware_mnt/image/
 
 #Memory Offline
 /sys/devices/system/memory/memory* state    0660 system system
+
+#spi ir nodes
+/dev/lirc0               0660   system     system
 
 /sys/devices/virtual/hdcp/msm_hdcp  min_level_change 0664    system  graphics
 
@@ -397,6 +401,9 @@ firmware_directories /vendor/firmware_mnt/image/
 /sys/class/graphics/fb0     modes                    0664    system  graphics
 /sys/class/graphics/fb0     mode                     0664    system  graphics
 /sys/class/graphics/fb0     msm_cmd_autorefresh_en   0664    system  graphics
-#bug 436190, zhangrui@wingtech.com, 20190404, modify for IR LED function
-/dev/spidev0.1        0660   system     system
-
+/sys/class/kgsl/kgsl-3d0    pwrscale                 0664    root  system
+/sys/class/kgsl/kgsl-3d0    devfreq/governor         0664    root  system
+/sys/class/kgsl/kgsl-3d0    force_rail_on            0664    root  system
+/sys/class/kgsl/kgsl-3d0    force_bus_on             0664    root  system
+/sys/class/kgsl/kgsl-3d0    force_clk_on             0664    root  system
+/sys/class/kgsl/kgsl-3d0    bus_split                0664    root  system
