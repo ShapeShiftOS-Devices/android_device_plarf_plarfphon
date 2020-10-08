@@ -152,25 +152,8 @@ PRODUCT_COPY_FILES += \
 
 # Ramdisk
 PRODUCT_PACKAGES += \
-    init.class_main.sh \
-    init.crda.sh \
-    init.mdm.sh \
-    init.mi.usb.sh \
-    init.plarfdragon.class_core.sh \
-    init.plarfdragon.coex.sh \
-    init.plarfdragon.crashdata.sh \
-    init.plarfdragon.early_boot.sh \
-    init.plarfdragon.efs.sync.sh \
     init.plarfdragon.post_boot.sh \
-    init.plarfdragon.sdio.sh \
-    init.plarfdragon.sensors.sh \
     init.plarfdragon.sh \
-    init.plarfdragon.usb.sh \
-    init.qti.chg_policy.sh \
-    init.qti.fm.sh \
-    init.qti.ims.sh \
-    qca6234-service.sh \
-    init.msm.usb.configfs.rc \
     init.plarfdragon.factory.rc \
     init.plarfdragon.rc \
     init.plarfdragon.usb.rc \
