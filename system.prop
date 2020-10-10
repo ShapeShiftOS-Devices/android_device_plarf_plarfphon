@@ -244,6 +244,9 @@ ro.signal.five = true
 
 #ExtB-HONGMI-67581, xiongwei.wt, add , 20190628, disable rcs
 persist.rcs.supported = 0
+
+# Ultra PUBG mode
+ro.pubg.42069.fps.mode = 1
 # end of device/qcom/qssi/system.prop
 
 #
