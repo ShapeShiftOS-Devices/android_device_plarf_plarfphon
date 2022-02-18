@@ -1,0 +1,2 @@
+on init
+    setenforce 0

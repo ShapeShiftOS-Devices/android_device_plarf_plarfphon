@@ -1002,5 +1002,15 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <transport>hwbinder</transport>
         <fqname>@1.0::IGnss/gnss_vendor</fqname>
     </hal>
+    <hal format="hidl">
+        <name>plarf.hardware.nowplaying</name>
+        <transport>hwbinder</transport>
+        <fqname>@1.0::IPlaying/playing_vendor</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>plarf.hardware.yiff</name>
+        <transport>hwbinder</transport>
+        <fqname>@1.0::IYiff/yiff_vendor</fqname>
+    </hal>
 </manifest>
 

@@ -102,7 +102,19 @@ DEVICE_PACKAGE_OVERLAYS += \
 
 # Fp is lit
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.1-service.plarf_plarfphon
+    android.hardware.biometrics.fingerprint@2.1-service.plarf_plarfphon \
+    android.hardware.biometrics.fingerprint@2.1-service.plarf_plarfphon.vendor
+
+
+# DRM
+PRODUCT_PACKAGES += \
+    android.hardware.drm@1.4-service.clearkey
+
+# Security
+PRODUCT_PACKAGES += \
+    plarf.hardware.selinux.autodenial@1.0 \
+    plarf.hardware.selinux.autodenial@1.0.recovery \
+    plarf.hardware.selinux.autodenial@1.0.vendor
 
 # Permissions
 PRODUCT_COPY_FILES += \

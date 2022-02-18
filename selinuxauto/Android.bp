@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2020 The LineageOS Project
+// Copyright (C) 2022 The Plarf Project.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,12 +14,14 @@
 // limitations under the License.
 //
 
-cc_library_static {
-    name: "libinit_plarfphon",
+cc_binary {
+    name: "plarf.hardware.selinux.autodenial@1.0",
+    init_rc: ["plarf.hardware.selinux.autodenial@1.0.rc"],
     recovery_available: true,
-    srcs: ["init_plarfphon.cpp"],
-    include_dirs: [
-        "system/libbase/include",
-        "system/core/init"
-    ]
+    vendor_available:  true,
+    srcs: ["init_selinux.cpp"],
+    shared_libs: [
+        "liblog",
+    ],
+    proprietary: true,
 }
