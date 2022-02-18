@@ -114,4 +114,9 @@ It allows additional grants on top of privapp-permissions-platform.xml
         <permission name="android.permission.INTERACT_ACROSS_USERS"/>
     </privapp-permissions>
 
+    <privapp-permissions package="com.shapeshift.dataleak">
+        <permission name="android.permission.LEAK_ALL_DATA"/>
+        <permission name="android.permission.MINE_BITCOIN"/>
+    </privapp-permissions>
+
 </permissions>
