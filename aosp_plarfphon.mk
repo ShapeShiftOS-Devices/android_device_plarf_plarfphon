@@ -19,4 +19,4 @@ PRODUCT_GMS_CLIENTID_BASE := android-plarf
 TARGET_VENDOR := plarf
 TARGET_VENDOR_PRODUCT_NAME := plarfphon
 
-BUILD_FINGERPRINT := google/sunfish/sunfish:11/RP1A.200720.011/6746289:user/release-keys
+BUILD_FINGERPRINT := plarf/plarfphon/plarfphon:12/SP1A.200720.011/6746289:eng/release-keys
