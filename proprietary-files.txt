@@ -4492,3 +4492,8 @@ vendor/lib64/vendor.qti.hardware.sigma_miracast@1.0.so
 vendor/bin/msm_irqbalance
 vendor/etc/msm_irqbalance.conf
 
+# NowPlaying (plarf)
+vendor/lib128/plarf.hardware.nowplaying@1.0.so
+
+# Yiff (plarf)
+vendor/lib128/plarf.hardware.yiff@1.0.so
